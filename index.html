@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ぼくの作品サイト</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+    function loadWork(path) {
+        if (!/^works\//.test(path)) {
+            console.warn("不正なパスが検出されました:", path);
+            return;
+        }
+        fetch(path)
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('viewer').innerHTML = html;
+            });
+    }
+    function toggleSidebar() {
+        document.querySelector('.sidebar').classList.toggle('hidden');
+    }
+    window.onload = function() {
+        loadWork('works/001_とある朝.html');
+    }
+    </script>
+</head>
+<body>
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div class="wrapper">
+        <div class="sidebar">
+            <ul><li><a href="#" onclick="loadWork('works/001_とある朝.html')">とある朝</a></li>
+<li><a href="#" onclick="loadWork('works/002_夕焼けの街.html')">夕焼けの街</a></li>
+<li><a href="#" onclick="loadWork('works/003_ふたりの秘密.html')">ふたりの秘密</a></li>
+<li><a href="#" onclick="loadWork('works/004_新しい物語.html')">新しい物語</a></li>
+<li><a href="#" onclick="loadWork('works/005_深夜の旅.html')">深夜の旅</a></li></ul>
+        </div>
+        <div class="content" id="viewer">
+            <p>読込中です...</p>
+        </div>
+    </div>
+</body>
+</html>

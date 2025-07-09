@@ -1,0 +1,93 @@
+
+body {
+    font-family: "Noto Serif JP", "Yu Mincho", serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('images/background.webp');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: repeat;
+    color: #333;
+    line-height: 1.75;
+}
+
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 220px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1em;
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+.content {
+    flex-grow: 1;
+    max-width: 800px;
+    margin: 2em auto;
+    padding: 2em;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-btn {
+    position: fixed;
+    top: 1em;
+    left: 1em;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li::before {
+    content: "◆ ";
+    color: #6699cc;
+    font-weight: bold;
+}
+
+a {
+    color: #3366cc;
+    text-decoration: none;
+    border-bottom: 1px dashed #3366cc;
+}
+
+a:hover {
+    background-color: #ffffcc;
+}
+
+img.header {
+    display: block;
+    margin: 0 auto 2em auto;
+    max-width: 100%;
+    border: 4px double #999;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        height: 100%;
+        z-index: 999;
+        top: 0;
+        left: 0;
+    }
+
+    .content {
+        margin: 1em;
+        padding: 1em;
+    }
+}
